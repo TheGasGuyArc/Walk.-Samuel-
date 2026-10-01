@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WALK.FUN — Injective Token Launchpad</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        injDark: '#0b0f19',
+                        injCard: '#131c2e',
+                        injNeon: '#00F2FE',
+                        injPurple: '#4FACFE'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome & Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
+        .glow-text { text-shadow: 0 0 15px rgba(0, 242, 254, 0.5); }
+        .glow-box { box-shadow: 0 0 25px rgba(0, 242, 254, 0.15); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-injNeon selection:text-black">
+
+    <!-- Header / Navigation -->
+    <header class="border-b border-gray-800 bg-injDark/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-500 flex items-center justify-center font-bold text-black text-xl glow-box">W</div>
+                <span class="text-2xl font-bold tracking-wider text-white">WALK<span class="text-injNeon">.FUN</span></span>
+                <span class="text-xs px-2 py-0.5 rounded bg-blue-900/50 border border-blue-500/30 text-injNeon hidden sm:inline-block">Injective L1</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-2 bg-injCard px-3 py-1.5 rounded-lg border border-gray-800 text-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse"></span>
+                    <span class="text-gray-400">INJ Gas: <strong class="text-white">0.001 INJ</strong></span>
+                </div>
+                <button id="connectWalletBtn" onclick="connectWallet()" class="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold px-5 py-2.5 rounded-xl hover:opacity-90 transition shadow-lg shadow-cyan-500/20">
+                    <i class="fa-solid fa-wallet mr-2"></i>Connect Wallet
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Left/Center: Hero & Active Token Launch Feed -->
+        <div class="lg:col-span-2 space-y-6">
+            <div class="bg-gradient-to-r from-injCard to-gray-900 border border-gray-800 p-8 rounded-2xl relative overflow-hidden glow-box">
+                <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">Launch Memes on <span class="text-injNeon glow-text">Injective</span> Instantly.</h1>
+                <p class="text-gray-400 max-w-xl mb-6">Zero friction bonding curve mechanism powered by lightning-fast Injective network infrastructure. Fair launch, zero presale tax.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#launchSection" class="bg-injNeon text-black font-bold px-6 py-3 rounded-xl hover:bg-cyan-300 transition">Start $WALK Launch</a>
+                    <a href="https://x.com/runupdotfun" target="_blank" class="bg-gray-800 border border-gray-700 text-white font-semibold px-6 py-3 rounded-xl hover:bg-gray-700 transition flex items-center">
+                        <i class="fa-brands fa-x-twitter mr-2"></i>View Protocol Context
+                    </a>
+                </div>
+            </div>
+
+            <!-- Token List Header & Filter -->
+            <div class="flex items-center justify-between pt-4">
+                <h2 class="text-xl font-bold text-white flex items-center"><i class="fa-solid fa-fire text-orange-500 mr-2"></i>Trending on $WALK</h2>
+                <div class="flex space-x-2 text-sm text-gray-400">
+                    <button class="px-3 py-1 bg-injCard rounded-lg text-white border border-gray-800">Top Graduating</button>
+                    <button class="px-3 py-1 bg-gray-900 rounded-lg hover:text-white transition">Newest</button>
+                </div>
+            </div>
+
+            <!-- Token Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Sample Token Card 1 -->
+                <div class="bg-injCard border border-gray-800 rounded-2xl p-5 hover:border-cyan-500/50 transition cursor-pointer group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center font-bold text-xl text-white">W</div>
+                            <div>
+                                <h3 class="font-bold text-white group-hover:text-injNeon transition">Walk Token</h3>
+                                <p class="text-xs text-gray-400">$WALK / INJ</p>
+                            </div>
+                        </div>
+                        <span class="text-xs px-2 py-1 bg-green-500/10 text-green-400 border border-green-500/20 rounded-full font-mono">Bonding: 84%</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-4 line-clamp-2">The ultimate movement protocol token built natively on Injective layer-1 blockchain.</p>
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs text-gray-400">
+                            <span>Progress to DEX</span>
+                            <span class="text-white font-mono">84.2%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-400 to-blue-500 h-full w-[84%]"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Token Card 2 -->
+                <div class="bg-injCard border border-gray-800 rounded-2xl p-5 hover:border-cyan-500/50 transition cursor-pointer group">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center font-bold text-xl text-white">INJ</div>
+                            <div>
+                                <h3 class="font-bold text-white group-hover:text-injNeon transition">Injective Speed</h3>
+                                <p class="text-xs text-gray-400">$SPEED / INJ</p>
+                            </div>
+                        </div>
+                        <span class="text-xs px-2 py-1 bg-green-500/10 text-green-400 border border-green-500/20 rounded-full font-mono">Bonding: 32%</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-4 line-clamp-2">Fastest block times, zero front-running, maximum yield meme power.</p>
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs text-gray-400">
+                            <span>Progress to DEX</span>
+                            <span class="text-white font-mono">32.0%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-cyan-400 to-blue-500 h-full w-[32%]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Create / Launch Token Form -->
+        <div id="launchSection" class="bg-injCard border border-gray-800 rounded-2xl p-6 h-fit shadow-xl">
+            <h2 class="text-xl font-bold text-white mb-1 flex items-center"><i class="fa-solid fa-rocket text-injNeon mr-2"></i>Create Token</h2>
+            <p class="text-xs text-gray-400 mb-6">Deploy your custom memecoin on Injective network.</p>
+
+            <form id="createTokenForm" onsubmit="handleCreateToken(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Token Name</label>
+                    <input type="text" id="tokenName" required placeholder="e.g. Walk Protocol" class="w-full bg-injDark border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-injNeon">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Ticker Symbol</label>
+                    <input type="text" id="tokenTicker" required value="WALK" class="w-full bg-injDark border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-injNeon font-mono">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Description</label>
+                    <textarea id="tokenDesc" rows="3" placeholder="Tell us about your token..." class="w-full bg-injDark border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-injNeon resize-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Logo URL (Optional)</label>
+                    <input type="url" id="tokenLogo" placeholder="https://..." class="w-full bg-injDark border border-gray-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-injNeon">
+                </div>
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold py-3 rounded-xl hover:opacity-90 transition shadow-lg shadow-cyan-500/10">
+                        Launch Token ($WALK Engine)
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 bg-injDark py-6 text-center text-xs text-gray-500">
+        <p>&copy; 2026 WALK.FUN on Injective Network. All rights reserved.</p>
+    </footer>
+
+    <!-- Script File -->
+    <script src="app.js"></script>
+</body>
+  </html>
+      
